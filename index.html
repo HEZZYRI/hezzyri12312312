@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="title">_</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        background-color: black;
+        color: white;
+        font-family: 'Silkscreen', sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    #text {
+        font-size: 24px;
+    }
+    #tag {
+        font-size: 12px;
+        position: absolute;
+        top: 15px;
+        width: 100%;
+        text-align: center;
+    }
+    #snowflake {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background-color: white;
+        border-radius: 50%;
+        animation: snow 5s linear infinite;
+    }
+    @keyframes snow {
+        0% {
+            transform: translateY(-10vh);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(100vh);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+    <audio autoplay loop>
+      <source src="https://sunudentiste.com/kissme.m4a" type="audio/mpeg">
+    </audio>
+
+    <div class="center">
+        <div>
+            <img src="https://telegra.ph/file/3b933769d1c2df9903636.gif" alt="Image" width="200">
+        </div>
+        <div id="text"></div>
+    </div>
+
+    <div id="tag">MY TAG - t.me/Hessyri</div>
+
+    <script>
+        const titleText = ">_< doxing.monster"; 
+        let index1 = 0;
+
+        function addLetter1() {
+            const currentTitle = document.getElementById("title").innerText;
+            if (index1 <= titleText.length) {
+                document.getElementById("title").innerText = titleText.substring(0, index1) + "_";
+                index1++;
+                setTimeout(addLetter1, 500);
+            } else {
+                document.getElementById("title").innerText = titleText;
+            }
+        }
+        addLetter1();
+
+        const textArray = ["I'm Hessyri", "I'm from Russia", "I am a specialist in: DDoS", "Pentest", "Swatting", "Coding", "My price - doxing.fun/price"];
+        let index2 = 0;
+        let textIndex = 0;
+
+        function addLetter() {
+            const currentText = textArray[textIndex];
+            const currentElement = document.getElementById("text");
+            if (index2 <= currentText.length) {
+                currentElement.innerText = currentText.substring(0, index2);
+                index2++;
+                setTimeout(addLetter, 400);
+            } else {
+                index2 = 0;
+                textIndex = (textIndex + 1) % textArray.length;
+                setTimeout(addLetter, 500);
+            }
+        }
+
+        addLetter();
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.id = 'snowflake';
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        setInterval(createSnowflake, 100);
+    </script>
+</body>
+</html>
